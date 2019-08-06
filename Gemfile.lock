@@ -162,6 +162,7 @@ DEPENDENCIES
   mapbox-sdk
   puma (~> 3.11)
   rails (~> 5.2.3)
+  rest-client
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
