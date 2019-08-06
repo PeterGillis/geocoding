@@ -1,18 +1,15 @@
 # frozen_string_literal: true
 
 class MuseumsController < ApplicationController
+
   def index
     @museums = Museum.all
-    respond_to do |format|
-      format.html
-      format.json { render json:
-        params[:lat]
-      }
-  end
-  #   mapbox_key = ENV['MAPBOX_API_KEY']
-  #   url = "https://api.mapbox.com/geocoding/v5/mapbox.places/-73.989,40.733.json?types=poi&access_token=#{mapbox_key}"
-  #   # url = "https://api.mapbox.com/geocoding/v5/mapbox.places/museums?lat=#{latitude}&lng=#{longitude}&access_token=#{mapbox_key}"
-
+    # render json:
+    mapbox_key = ENV['MAPBOX_API_KEY']
+    # url = "https://api.mapbox.com/geocoding/v5/mapbox.places/-73.989,40.733.json?types=poi&access_token=#{mapbox_key}"
+    # url = "https://api.mapbox.com/geocoding/v5/mapbox.places/museums?lat=#{latitude}&lng=#{longitude}&access_token=#{mapbox_key}"
+    response = HTTParty.get("https://api.mapbox.com/geocoding/v5/mapbox.places/-73.989,40.733.json?types=poi&access_token=#{mapbox_key}")
+    body = JSON.parse(response.body)
   #   # response = RestClient.get(url)
   #   # json = JSON.parse(response)
   #   # render json: {
@@ -24,8 +21,7 @@ class MuseumsController < ApplicationController
 
   #   puts "#{museum['lat']} - #{museum['access_token']}"
 
-  # end
-
+  end
 
   # # lat = params[:lat]
   # # lng = params[:lng]
@@ -35,7 +31,6 @@ class MuseumsController < ApplicationController
   # # "https://api.mapbox.com/geocoding/v5/mapbox.places/museums?lat=#{lat}&lng=#{lng}.json"
   # # get mapbox results
   # # Return the results as a json
-
   private
 
   def params
