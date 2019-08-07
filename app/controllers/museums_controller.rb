@@ -4,7 +4,10 @@ class MuseumsController < ApplicationController
   def index
     # @museums = Museum.all
     render json: { 'lat': (params[:lat]), 'lng': (params[:lng])}
-    raise
-
   end
+
+
 end
+
+
+# objective: show the postcode and the name of the retirned results as a JSON
