@@ -5,7 +5,7 @@ class MuseumsController < ApplicationController
     lat = params[:lat]
     lng = params[:lng]
     find_nearby_places(lat, lng)
-
+    raise
     # render json: { 'lat': params[:lat],
     #   'lng': params[:lng],
     #   'poi': params[:poi]
@@ -39,5 +39,5 @@ def find_nearby_places(lat, lng)
   # API call
   mapbox_key = ENV['MAPBOX_API_KEY']
   response = HTTParty.get("https://api.mapbox.com/geocoding/v5/mapbox.places/#{lat},#{lng}.json?types=poi&access_token=#{mapbox_key}")
-  return response.body, response.code, response.message, response.headers.inspect
+  puts response.body, response.code, response.message, response.headers.inspect
 end

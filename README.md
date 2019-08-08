@@ -6,6 +6,10 @@ Brief: The task is to create a small Ruby API application providing an endpoint,
 
 The app function is for a user to be able to display which museums which are in the area based upon the given coordunates the user can input, either via manually inputting data into the URL, using Postman or connecting it to another APP.
 
+The API call uses the Mapbox API:
+
+``` https://docs.mapbox.com/api/search/#mapboxplaces```
+
 For exmaple you can use ```http://localhost:3000/museums``` or ```http://localhost:3000/museums?lat=52.494857&lng=13.437641```
 
 The result should be like this:
