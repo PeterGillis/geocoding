@@ -3,10 +3,15 @@
 class MuseumsController < ApplicationController
   def index
     # @museums = Museum.all
-    render json: { 'lat': params[:lat],
-      'lng': params[:lng],
-      'poi': params[:poi]
-    }
+    lat = params[:lat]
+    lng = params[:lng]
+    find_nearby_places(lat, lng)
+
+
+    # render json: { 'lat': params[:lat],
+    #   'lng': params[:lng],
+    #   'poi': params[:poi]
+    # }
   end
 end
 
@@ -29,3 +34,10 @@ end
 # }
 # mapbox_key = ENV['MAPBOX_API_KEY']
 # url = "https://api.mapbox.com/geocoding/v5/mapbox.places/-73.989,40.733.json?types=poi&access_token=#{mapbox_key}"
+
+private
+
+def find_nearby_places(lat, lng)
+  # API call
+end
+
