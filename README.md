@@ -10,31 +10,11 @@ For exmaple you can use ```http://localhost:3000/museums``` or ```http://localho
 
 The result should be like this:
 
-```{
+```
+{
   "lat": "52.494857",
   "lng": "13.437641",
   "poi": null
 }
 ```
 
-Things you may want to cover:
-
-* Ruby version 2.5.3
-
-* Rails version 5.2.3
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

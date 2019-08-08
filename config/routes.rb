@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  resources :museums, only: [:index]
+  resources :museums, only: [:index, :show, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # Add a real time route
+  mount ActionCable.server => '/cable'
 end
