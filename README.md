@@ -16,8 +16,14 @@ The result should be something like this:
 
 ```
 {
-  "lat": "52.494857",
-  "lng": "13.437641"
+  "10999": ["Werkbundarchiv – museum of things"],
+  "12043": ["Museum im Böhmischen Dorf"],
+  "10179": [
+    "Märkisches Museum",
+    "Museum Kindheit und Jugend",
+    "Historischer Hafen Berlin"
+  ],
+  "12435": ["Archenhold Observatory"]
 }
 ```
 Please see the Mapbox documentaion here: ```https://docs.mapbox.com/api/search/#reverse-geocoding```
