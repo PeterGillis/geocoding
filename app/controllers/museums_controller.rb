@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'open-uri'
 
-class MuseumsController < ApplicationController
+class Api::V1::MuseumsController < ApplicationController
   def index
     lat = params[:lat]
     lng = params[:lng]
