@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 require 'open-uri'
 
-class Api::V1::MuseumsController < ApplicationController
+class MuseumsController < ApplicationController
   def index
     lat = params[:lat]
     lng = params[:lng]
     find_nearby_places(lat, lng)
     # defining what can be taken from the URL Params
+    raise
   end
 
   private
@@ -15,34 +16,68 @@ class Api::V1::MuseumsController < ApplicationController
     # API call (does not work yet)
     mapbox_key = ENV['MAPBOX_API_KEY']
     response = HTTParty.get("https://api.mapbox.com/geocoding/v5/mapbox.places/&lat=#{lat}&lng=#{lng}.json?access_token=#{mapbox_key}")
-    JSON.parse(response.body)
+    jsoned = JSON.parse(response.body)
 
-    museums_hash = {
-      type: 'museum',
-      postcode: 'postcode',
-      name: ['place_name']
+    # returns array of museums
+    museums = jsoned['features']
+    # returns the first museum in the array
+    # p jsoned['features'][0]
+    # returns the name of the first museum in the array
+
+    # create a hash, postcodes as keys and empty array as the values.
+    new_hash = {}
+    # lets create key-value pair, postcode:empty-array
+    museums.each do |m|
+      # get post code
+      postcode = m['context'][1]['text']
+      # get the museum name
+      museum_name = m['text']
+      # new_hash[postcode] = [museum_name]
+      if the post code(key) of the museum already exist in new_hash
+          then insert the museum name into the array(value)
+      otherwise
+          do new_hash[postcode] = [museum_name]
+      end
+
+      # new_hash["11111"] = ["Museum A","Museum B"]
+      # new_hash["11111"] = ["Museum B"]
+    end
+
+    # new_hash["11111"] = ["Museum B"]
+    # now new_hash is a key-value pairs of postcode and empty array
+    # postcode:empty array
+    # {
+    #   "11111":["museum A"],
+    #   "22222":["Museum B"]
+    # }
+
+    # max = 30
+    # for i in 0...max
+    #   museum_name = jsoned['features'][i]['text']
+    #   new_hash[postcode].push(museum_name)
+    # end
+
+    # access post code, always second hash of 'context'
+    # jsoned['features'][0]['context'][1]
+    # the post code
+    # postcode = jsoned['features'][0]['context'][1]['text']
+
+
+    final_response = new_hash
+
+    final_response = {
+      "10437":[
+          "Museum01",
+          "Museum02",
+          "Museum03"
+      ]
     }
 
-    JSON.parse(museums_hash)
 
-    # url = "https://api.mapbox.com/geocoding/v5/mapbox.places/&lat=#{lat}&lng=#{lng}.json?access_token=#{mapbox_key}"
-    # response = open(url).read
-    # hashed_response = JSON.parse(response)
-    # return_places(hashed_response)
-    # interpolating the lat and long params in the base API URL
-    # Using response with url a a parameter to open the URL
-    # decalring a variabe for the response and returning it.
-  # end
 
-  # def return_places(response)
-  #   nearby_places = []
-  #   response["features, type"].each { |obj| nearby_places << obj["place_name"] }
-  #   nearby_places
-
-    # defining an empty array,
-    # pushing the results to ist and filtering by features and type (as an example)
-    # calling the method
 
 
   end
 end
+
+
