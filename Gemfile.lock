@@ -200,6 +200,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord (>= 6.0.3.5)
   autoprefixer-rails
   bootsnap
   dotenv-rails
@@ -211,7 +212,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma
-  rails
+  rails (~> 6.0)
   redis
   sassc-rails
   simple_form

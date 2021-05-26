@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 ruby '2.5.3'
 
+gem "activerecord", ">= 6.0.3.5"
 gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
-gem 'rails'
+gem 'rails', '~> 6.0'
 gem 'redis'
 
 gem 'autoprefixer-rails'
